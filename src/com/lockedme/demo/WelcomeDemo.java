@@ -76,6 +76,7 @@ public class WelcomeDemo {
 		          break;
 		        case 4:
 		          System.out.println ( "You picked option 4\nNavigating back to the Main Menu" );
+		          System.out.println ( "***********************************************************************************************" );
 		          menu.displayMainMenu();
 			      mainMenuChoice = in.nextInt();
 			      System.out.println("mainMenuChoice "+mainMenuChoice);

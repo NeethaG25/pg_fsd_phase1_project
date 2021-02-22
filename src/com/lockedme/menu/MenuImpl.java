@@ -20,7 +20,7 @@ public class MenuImpl implements Menu {
 		System.out.println ( "\nOption 1 - Please Select Option 1 to Add a File" );
 	    System.out.println ( "Option 2 - Please select Option 2 to Delete a File" );
 	    System.out.println ( "Option 3 - Please select Option 3 to Search a File" );
-	    System.out.println ( "Option 3 - Please select Option 4 to Go Back to the Main Menu" );
+	    System.out.println ( "Option 4 - Please select Option 4 to Go Back to the Main Menu" );
 	    System.out.print ( "Selection: " );
 	  }
 

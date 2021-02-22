@@ -82,6 +82,9 @@ public class FileOperationsImpl implements FileOperations {
 	    boolean fileExists = false;
 	    if(files!=null) {
 		    for(String file : files) {
+		    	if(!file.endsWith(".txt")) {
+		    		file = file+".txt";
+		    	}
 		        if(file.toString().equalsIgnoreCase(fileObj.getFilename().toString())) {
 		        	fileExists = true;
 		        	break;
@@ -101,6 +104,9 @@ public class FileOperationsImpl implements FileOperations {
 		    boolean fileExists = false;
 		    if(files!=null) {
 			    for(String file : files) {
+			    	if(!file.endsWith(".txt")) {
+			    		file = file+".txt";
+			    	}
 			        if(file.equals(fileObj.getFilename())) {
 			        	fileExists = true;
 			        	break;

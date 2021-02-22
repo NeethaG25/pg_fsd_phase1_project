@@ -1,79 +1,84 @@
-package com.lockedme.menu;
+package com.lockedme.demo;
 
-import java.io.File;
 import java.util.Scanner;
 
+import com.lockedme.file.FileObj;
+import com.lockedme.menu.Menu;
+import com.lockedme.menu.MenuImpl;
 import com.lockedme.option1.DisplayFiles;
+import com.lockedme.option1.DisplayFilesImpl;
 import com.lockedme.option2.FileOperations;
+import com.lockedme.option2.FileOperationsImpl;
 
 public class WelcomeDemo {
 	
-	static String root = "/home/kneetha76yahoo/Desktop/Git/phase1_project/files_folder";
-	static File dir = new File(root);
-		
-	public static void displayMainMenu() {
-	    System.out.println ( "1) Option 1\n2) Option 2\n3) Option 3" );
-	    System.out.print ( "Selection: " );
-	  }
-	
-	public static void displaySubMenu() {
-	    System.out.println ( "1) Option 1\n2) Option 2\n3) Option 3\n4) Option 4" );
-	    System.out.print ( "Selection: " );
-	  }
-
 	public static void main(String[] args) {
 		
-		DisplayFiles dirfiles = new DisplayFiles();
-		FileOperations file = new FileOperations();
-		int mainMenuChoice, subMenuChoice, filename;
+		FileObj fileObj = new FileObj();
+		Menu menu = new MenuImpl();		
+		DisplayFiles dirfiles = new DisplayFilesImpl();
+		FileOperations file = new FileOperationsImpl();
+		int mainMenuChoice, subMenuChoice; 
+		//String filename;
 		
 		Scanner in = new Scanner ( System.in );
-		displayMainMenu();
-		mainMenuChoice = in.nextInt();
+		menu.displayProjectDetails();
+		menu.displayMainMenu();
+		mainMenuChoice = in.nextInt();	
 		
 		while (mainMenuChoice < 1 || mainMenuChoice > 3) {
 	        System.out.print("\nError! Incorrect choice.\n");
-	        displayMainMenu();
+	        menu.displayMainMenu();
 	        mainMenuChoice = in.nextInt();
 	    }
+		
 		do {
+
 			switch (mainMenuChoice) {
 		      case 1:
 		        System.out.println ( "You picked option 1" );
-		        dirfiles.filesInAscOrder(dir);
+		        dirfiles.filesInAscOrder(fileObj.getDir());
+		        mainMenuChoice = 3;
 		        break;
 		      case 2:
 		        System.out.println ( "You picked option 2" );
-		        displaySubMenu();
+		        menu.displaySubMenu();
 		        subMenuChoice = in.nextInt();
-		        while (subMenuChoice < 1 || subMenuChoice > 3) {
+		        while (subMenuChoice < 1 || subMenuChoice > 4) {
 			        System.out.print("\nError! Incorrect choice.\n");
-			        displayMainMenu();
+			        menu.displayMainMenu();
 			        subMenuChoice = in.nextInt();
 			    }
 		        switch (subMenuChoice) {
 		        case 1:
 		          System.out.println ( "You picked option 1" );
+		          in.nextLine();
 		          System.out.println("Please enter the file to be added : ");
-		          filename = in.nextInt();
-		          file.addFile(dir, root, String.valueOf(filename));
+		          fileObj.setFilename(in.nextLine()+".txt");
+		          file.addFile(fileObj);
+		          mainMenuChoice = 3;
 		          break;
 		        case 2:
 		          System.out.println ( "You picked option 2" );
+		          in.nextLine();
 		          System.out.println("Please enter the file to be deleted : ");
-		          filename = in.nextInt();
-		          file.deteleFile(dir, root, String.valueOf(filename));
+		          fileObj.setFilename(in.nextLine()+".txt");
+		          file.deteleFile(fileObj);
+		          mainMenuChoice = 3;
 		          break;
 		        case 3:
 		          System.out.println ( "You picked option 3" );
+		          in.nextLine();
 		          System.out.println("Please enter the file you would like to search : ");
-		          filename = in.nextInt();
-		          file.searchFile(dir, root, String.valueOf(filename));
+		          fileObj.setFilename(in.nextLine()+".txt");
+		          file.searchFile(fileObj);
+		          mainMenuChoice = 3;
 		          break;
 		        case 4:
 		          System.out.println ( "You picked option 4\nNavigating back to the Main Menu" );
-		          displayMainMenu();
+		          menu.displayMainMenu();
 			      mainMenuChoice = in.nextInt();
+			      System.out.println("mainMenuChoice "+mainMenuChoice);
 		          break;
 		        default:
 		          System.err.println ( "Unrecognized option" );
@@ -81,7 +86,7 @@ public class WelcomeDemo {
 		      }
 		        break;
 		      case 3:
-		        System.out.println ( "You picked option 3" );
+		        System.out.println ( "You picked option 3, exiting the Application" );
 		        System.exit(0);
 		        break;
 		      default:
@@ -89,7 +94,10 @@ public class WelcomeDemo {
 		        break;
 		    }
 		} while (mainMenuChoice != 3);
+		
+		in.close();
 
 	}
+	
 
 }

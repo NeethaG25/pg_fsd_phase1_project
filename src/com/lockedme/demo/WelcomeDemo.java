@@ -19,7 +19,6 @@ public class WelcomeDemo {
 		DisplayFiles dirfiles = new DisplayFilesImpl();
 		FileOperations file = new FileOperationsImpl();
 		int mainMenuChoice, subMenuChoice; 
-		//String filename;
 		
 		Scanner in = new Scanner ( System.in );
 		menu.displayProjectDetails();

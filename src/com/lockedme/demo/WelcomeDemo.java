@@ -52,7 +52,7 @@ public class WelcomeDemo {
 		        case 1:
 		          System.out.println ( "You picked option 1" );
 		          in.nextLine();
-		          System.out.println("Please enter the file to be added : ");
+		          System.out.println("Please enter the file to be added : \nPlease note : A .txt file will be added for the filename specified");
 		          fileObj.setFilename(in.nextLine()+".txt");
 		          file.addFile(fileObj);
 		          mainMenuChoice = 3;

@@ -4,7 +4,8 @@ import java.io.File;
 
 public class FileObj {
 	
-	//static String root = "/home/kneetha76yahoo/Desktop/Git/phase1_project/files_folder";
+	//static String root = "/home/kneetha76yahoo/Desktop/Git/phase1_project/files_folder";private String root = ".\\files_folder";
+	//private String root = "./files_folder";
 	private String root = ".\\files_folder";
 	private File dir = new File(root);
 	private String filename;
